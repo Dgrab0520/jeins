@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -671,12 +670,14 @@ class _MainPageState extends State<MainPage> {
                           margin: EdgeInsets.only(bottom:20.0),
                           child: Row(
                             children: [
-                              IconButton(
-                                icon: Icon(Icons.menu,size:45,), // 햄버거버튼 아이콘 생성
-                                onPressed: () {
-                                  // 아이콘 버튼 실행
-                                  print('menu button is clicked');
-                                },
+                              Builder(builder:(context) =>
+                                  IconButton(
+                                    icon: Icon(Icons.menu,size:45,), // 햄버거버튼 아이콘 생성
+                                    onPressed: (){
+                                      Scaffold.of(context).openEndDrawer();
+                                      print('menu button is clicked');
+                                    },
+                                  ),
                               ),
                             ],
                           ),
@@ -711,6 +712,125 @@ class _MainPageState extends State<MainPage> {
           ],
         ),
       )),
+        endDrawer: new Drawer(
+          child: Drawer(
+            child:Container(
+              child:ListView(
+                children: <Widget>[
+                  ListTile(
+                    tileColor:Color(0xFFf1892c),
+                    leading: IconButton(
+                      icon: Icon(Icons.home_filled),
+                      onPressed: (){
+                        Navigator.pop(
+                          context,
+                          MaterialPageRoute(builder: (context) => MainPage()),
+                        );
+                        print('success');
+                      },
+                      color: Colors.white,
+                    ),
+                    title: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        IconButton(
+                          icon: Icon(Icons.close),
+                          onPressed: () {
+                            Navigator.pop(
+                              context,
+                              MaterialPageRoute(builder: (context) => MainPage()),
+                            );
+                            print('success');
+                          },
+                          color: Colors.white,
+                        ),
+                      ],
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => EMDR()),
+                      );
+                      print('success');
+                    },
+                    child: Card(
+                      child:ListTile(
+                        title:Text('Emdr',
+                        style:TextStyle(
+                          fontSize:20,
+                          fontWeight:FontWeight.bold,
+                         ),
+                        ),
+                      )
+                    ),
+                  ),
+
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MainPage()),
+                      );
+                      print('success');
+                    },
+                    child: Card(
+                        child:ListTile(
+                          title:Text('Company',
+                            style:TextStyle(
+                              fontSize:20,
+                              fontWeight:FontWeight.bold,
+                            ),
+                          ),
+                        )
+                    ),
+                  ),
+
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MainPage()),
+                      );
+                      print('success');
+                    },
+                    child: Card(
+                        child:ListTile(
+                          title:Text('About',
+                            style:TextStyle(
+                              fontSize:20,
+                              fontWeight:FontWeight.bold,
+                            ),
+                          ),
+                        )
+                    ),
+                  ),
+
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MainPage()),
+                      );
+                      print('success');
+                    },
+                    child: Card(
+                        child:ListTile(
+                          title:Text('People',
+                            style:TextStyle(
+                              fontSize:20,
+                              fontWeight:FontWeight.bold,
+                            ),
+                          ),
+                        )
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
     );
   }
 }
